@@ -1,0 +1,245 @@
+:root {
+  --bg: #1b1c1f;
+  --text: #ced2dd;
+  --text-h: #eef1f7;
+  --border: #454752;
+  --code-bg: #352e2e;
+  --code-text: #f8a5a5;
+  --highlight: #c06c6c;
+
+  --accent: #c4afaf;
+  --accent-bg: #362e2e;
+  --accent-border: #5e4c4c;
+
+  --serif: 'Lyon-Text', 'Georgia', 'Times New Roman', Times, serif;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  --font: var(--serif);
+
+  font: 18px/145% var(--font);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+[font-isSerif="false"]{
+  --font: var(--sans);
+}
+[theme-isDark="false"]{
+  --bg: #ededf0;
+  --text: #2b2f3a;
+  --text-h: #151822;
+  --border: #4f5158;
+  --highlight: #522020;
+
+  --code-bg: #cac5c5;
+  --code-text: #682222;
+
+  --accent: #a76161;
+  --accent-bg: #f0eded;
+  --accent-border: #584f4f;
+}
+
+body {
+  margin: 0.5em;
+}
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* -- TEXT AND HEADERS -- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 0.4em 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+  padding: 10px 10px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    var(--border) 50%,
+    transparent
+  ) 1;
+}
+h2 {
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -0.24px;
+  margin: 0 0 0.25em;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+h3, h4, h5, h6{
+  margin: 0.25em 0;
+}
+p {
+  margin: 0 0 0 10px ;
+}
+a{
+  color: var(--accent);
+}
+a:hover{
+  background-color: var(--accent-bg);
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--code-text);
+}
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+mark{
+  background-color: var(--highlight);
+  color: var(--bg);
+}
+
+/* -- LISTS -- */
+ul, ol{
+  padding-left: 0.5em;
+  border-left: 2px solid var(--border);
+  border-image: linear-gradient(
+    var(--border),
+    transparent
+  ) 1;
+}
+li{
+  margin-left: 1em;
+  width: 50%;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  padding-left: 0;
+}
+
+/* -- TABLES -- */
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+table caption{
+  font-weight: 600;
+}
+thead th{
+  border-bottom: 2px solid var(--border);
+}
+th, td{
+  border: 1px solid var(--border);
+  padding: 0.5em;
+}
+
+/* -- FORMS AND BUTTONS -- */
+form{
+  width: 100%;
+  margin-bottom: 1em;
+}
+input{
+  padding: 0.5em;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+input[type="range"]{
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+input[type="range"]:focus{
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+  background-color: var(--text-h);
+  height: 0.25em;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.2em;
+  width: 1.2em;
+  margin-top: -0.45em;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 2px solid var(--bg);
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb:hover{
+  background-color: var(--text-h);
+}
+input[type="range"]::-moz-range-thumb{
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 2px solid var(--bg);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb:hover{
+  background-color: var(--text-h);
+}
+
+select{
+  padding: 0.5em;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+button{
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.5em;
+}
+button:hover{
+  cursor: pointer;
+}
+
+/* -- MISC -- */
+hr{
+  border: 0;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  ) 1 ;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.flex{
+  display: flex;
+}
