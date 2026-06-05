@@ -1,21 +1,22 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --bg: #1b1c1f;
+  --text: #ced2dd;
+  --text-h: #eef1f7;
+  --border: #454752;
+  --code-bg: #352e2e;
+  --code-text: #f8a5a5;
 
+  --accent: #b4a3a3;
+  --accent-bg: #362e2e;
+  --accent-border: #5e4c4c;
+
+  --serif: 'Lyon-Text', 'Georgia', 'Times New Roman', Times, serif;
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --font: var(--serif);
 
-  font: 18px/145% var(--sans);
+  font: 18px/145% var(--font);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -30,24 +31,21 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+[font-isSerif="false"]{
+  --font: var(--sans);
+}
+[theme-isDark="false"]{
+  --bg: #ededf0;
+  --text: #2b2f3a;
+  --text-h: #151822;
+  --border: #4f5158;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --code-bg: #cac5c5;
+  --code-text: #682222;
+
+  --accent: #a76161;
+  --accent-bg: #f0eded;
+  --accent-border: #584f4f;
 }
 
 body {
@@ -55,20 +53,18 @@ body {
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--font);
   font-weight: 500;
   color: var(--text-h);
 }
@@ -81,6 +77,13 @@ h1 {
     font-size: 36px;
     margin: 20px 0;
   }
+  padding: 10px 10px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    var(--border) 50%,
+    transparent
+  ) 1;
 }
 h2 {
   font-size: 24px;
@@ -92,7 +95,7 @@ h2 {
   }
 }
 p {
-  margin: 0;
+  margin: 0 0 0 10px ;
 }
 
 code,
@@ -100,7 +103,7 @@ code,
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
-  color: var(--text-h);
+  color: var(--code-text);
 }
 
 code {
@@ -108,4 +111,77 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+hr{
+  border: 0;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  ) 1 ;
+  margin: 20px 0;
+  width: 100%;
+}
+button{
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.5em;
+}
+li{
+  list-style-type: none;
+  margin-left: none;
+  width: 50%;
+  display: flex;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+li > div.api-buttons{
+  margin-left: auto;
+  display: flex;
+  gap: 0.25em;
+}
+ul{
+  padding-left: 0.5em;
+  border-left: 2px solid var(--border);
+  border-image: linear-gradient(
+    var(--border),
+    transparent
+  ) 1;
+}
+input{
+  padding: 0.5em;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+select{
+  padding: 0.5em;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+form{
+  width: 100%;
+  margin-bottom: 1em;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+thead th{
+  border-bottom: 2px solid var(--border);
+}
+th, td{
+  border: 1px solid var(--border);
+  padding: 0.5em;
+}
+.flex{
+  display: flex;
 }
