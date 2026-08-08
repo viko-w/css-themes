@@ -1,7 +1,10 @@
 :root {
-  --bg: #1b1c1f;
-  --text: #ced2dd;
-  --text-h: #eef1f7;
+  --bg: #ffffff;
+  --text: #2a2a2a;
+  --text-h: #900900;
+  --link-hover: #999999;
+  --link-visited: #666666;
+  --link-visited-hover: #111111;
   --border: #454752;
   --code-bg: #352e2e;
   --code-text: #f8a5a5;
@@ -11,13 +14,13 @@
   --accent-bg: #362e2e;
   --accent-border: #5e4c4c;
 
-  --serif: 'Lyon-Text', 'Georgia', 'Times New Roman', Times, serif;
+  --font: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, serif;
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
   --font: var(--serif);
 
-  font: 18px/145% var(--font);
+  font: 0.875em var(--font);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -39,7 +42,7 @@
   --bg: #ededf0;
   --text: #2b2f3a;
   --text-h: #151822;
-  --border: #4f5158;
+  --border: #c8c8c8;
   --highlight: #522020;
 
   --code-bg: #cac5c5;
@@ -66,25 +69,21 @@ body {
 /* -- TEXT AND HEADERS -- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);
-  font-weight: 500;
+  font-weight: normal;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 1.5rem;
+  line-height: 1;
   letter-spacing: -1.68px;
-  margin: 0.4em 0;
+  margin: 0;
+  padding: 0.375em;
   @media (max-width: 1024px) {
     font-size: 36px;
     margin: 20px 0;
   }
   padding: 10px 10px;
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(
-    90deg,
-    var(--border) 50%,
-    transparent
-  ) 1;
 }
 h2 {
   font-size: 24px;
@@ -95,17 +94,30 @@ h2 {
     font-size: 20px;
   }
 }
+h3{
+  border-bottom: 1px solid var(--border);
+}
 h3, h4, h5, h6{
   margin: 0.25em 0;
 }
 p {
   margin: 0 0 0 10px ;
 }
+
 a{
-  color: var(--accent);
+  color: var(--text);
+}
+a:active, a:focus{
+  outline: 1px dotted;
 }
 a:hover{
-  background-color: var(--accent-bg);
+  color: var(--link-hover);
+}
+a:visited{
+  color: var(--link-visited);
+}
+a:visited:hover{
+  color: var(--link-visited-hover);
 }
 
 code,
@@ -130,19 +142,19 @@ mark{
 /* -- LISTS -- */
 ul, ol{
   padding-left: 0.5em;
-  border-left: 2px solid var(--border);
-  border-image: linear-gradient(
-    var(--border),
-    transparent
-  ) 1;
 }
 li{
-  margin-left: 1em;
-  width: 50%;
-  border-radius: 0.5em;
-  margin-bottom: 0.5em;
-  padding: 0.5em;
-  padding-left: 0;
+  padding: 0.375em 0;
+  list-style: none;
+}
+
+ul li a{
+  text-decoration: none;
+}
+ul li a::before{
+  color: var(--text-h);
+  content: "\00BB";
+  padding: 0 0.25em 0 0;
 }
 
 /* -- TABLES -- */

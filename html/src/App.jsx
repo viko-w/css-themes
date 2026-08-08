@@ -46,7 +46,7 @@ function App() {
 
         <h3>Unordered list</h3>
         <ul>
-          <li>List item one</li>
+          <li><a href="./">List item one (this is a link)</a></li>
           <li>List item two
             <ul>
               <li>Nested item 2.1</li>
